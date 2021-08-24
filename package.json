@@ -1,6 +1,6 @@
 {
   "name": "share-localstorage",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "share localstorage",
   "main": "index.js",
   "scripts": {

@@ -118,7 +118,7 @@
 
       shareLocalstorage.iframe.contentWindow.postMessage(JSON.stringify({
         id, method: 'getItem', keyName
-      }), '*', [channel.port2])
+      }), '*', [shareLocalstorage.channel.port2])
     })
   }
 
@@ -129,7 +129,7 @@
 
       shareLocalstorage.iframe.contentWindow.postMessage(JSON.stringify({
         id, method: 'setItem', keyName, keyValue
-      }), '*', [channel.port2])
+      }), '*', [shareLocalstorage.channel.port2])
     })
   }
 
@@ -140,7 +140,7 @@
 
       shareLocalstorage.iframe.contentWindow.postMessage(JSON.stringify({
         id, method: 'removeItem', keyName
-      }), '*', [channel.port2])
+      }), '*', [shareLocalstorage.channel.port2])
     })
   }
 
