@@ -116,7 +116,7 @@
       const id = uuid()
       shareLocalstorage.jEvent.once(id, resolve)
 
-      iframe.contentWindow.postMessage(JSON.stringify({
+      shareLocalstorage.iframe.contentWindow.postMessage(JSON.stringify({
         id, method: 'getItem', keyName
       }), '*', [channel.port2])
     })
@@ -127,7 +127,7 @@
       const id = uuid()
       shareLocalstorage.jEvent.once(id, resolve)
 
-      iframe.contentWindow.postMessage(JSON.stringify({
+      shareLocalstorage.iframe.contentWindow.postMessage(JSON.stringify({
         id, method: 'setItem', keyName, keyValue
       }), '*', [channel.port2])
     })
@@ -138,7 +138,7 @@
       const id = uuid()
       shareLocalstorage.jEvent.once(id, resolve)
 
-      iframe.contentWindow.postMessage(JSON.stringify({
+      shareLocalstorage.iframe.contentWindow.postMessage(JSON.stringify({
         id, method: 'removeItem', keyName
       }), '*', [channel.port2])
     })
