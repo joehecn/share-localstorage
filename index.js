@@ -16,7 +16,7 @@
     version: { full: '1.0.0', major: 1, minor: 0, dot: 0 },
     src: 'https://joehecn.github.io/sso/page2.html?version=1.0.0',
     jEvent: null,
-    channel: null,
+    // channel: null,
     iframe: null,
     init,
     destory,
@@ -52,8 +52,8 @@
     return new Promise(resolve => {
       if (typeof src === 'string') shareLocalstorage.src = src
   
-      const channel = new MessageChannel()
-      channel.port1.onmessage = onMessage
+      // const channel = new MessageChannel()
+      // channel.port1.onmessage = onMessage
   
       // 事件总线对象
       const jEvent = {
@@ -90,7 +90,7 @@
       iframe.isIframe = true
       document.body.appendChild(iframe)
   
-      shareLocalstorage.channel = channel
+      // shareLocalstorage.channel = channel
       shareLocalstorage.jEvent = jEvent
       shareLocalstorage.iframe = iframe
   
@@ -102,7 +102,7 @@
   }
 
   function destory () {
-    shareLocalstorage.channel = null
+    // shareLocalstorage.channel = null
 
     shareLocalstorage.jEvent.off()
     shareLocalstorage.jEvent = null
@@ -116,9 +116,12 @@
       const id = uuid()
       shareLocalstorage.jEvent.once(id, resolve)
 
+      const channel = new MessageChannel()
+      channel.port1.onmessage = onMessage
+
       shareLocalstorage.iframe.contentWindow.postMessage(JSON.stringify({
         id, method: 'getItem', keyName
-      }), '*', [shareLocalstorage.channel.port2])
+      }), '*', [channel.port2])
     })
   }
 
@@ -127,9 +130,12 @@
       const id = uuid()
       shareLocalstorage.jEvent.once(id, resolve)
 
+      const channel = new MessageChannel()
+      channel.port1.onmessage = onMessage
+
       shareLocalstorage.iframe.contentWindow.postMessage(JSON.stringify({
         id, method: 'setItem', keyName, keyValue
-      }), '*', [shareLocalstorage.channel.port2])
+      }), '*', [channel.port2])
     })
   }
 
@@ -138,9 +144,12 @@
       const id = uuid()
       shareLocalstorage.jEvent.once(id, resolve)
 
+      const channel = new MessageChannel()
+      channel.port1.onmessage = onMessage
+
       shareLocalstorage.iframe.contentWindow.postMessage(JSON.stringify({
         id, method: 'removeItem', keyName
-      }), '*', [shareLocalstorage.channel.port2])
+      }), '*', [channel.port2])
     })
   }
 
