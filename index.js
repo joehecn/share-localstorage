@@ -112,9 +112,14 @@
   }
 
   function getItem (keyName) {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       const id = uuid()
-      shareLocalstorage.jEvent.once(id, resolve)
+
+      shareLocalstorage.jEvent.once(id, data => {
+        data.message ?
+          reject(data):
+          resolve(data)
+      })
 
       const channel = new MessageChannel()
       channel.port1.onmessage = onMessage
@@ -128,7 +133,12 @@
   function setItem (keyName, keyValue) {
     return new Promise(resolve => {
       const id = uuid()
-      shareLocalstorage.jEvent.once(id, resolve)
+
+      shareLocalstorage.jEvent.once(id, data => {
+        data.message ?
+          reject(data):
+          resolve(data)
+      })
 
       const channel = new MessageChannel()
       channel.port1.onmessage = onMessage
@@ -142,7 +152,12 @@
   function removeItem (keyName) {
     return new Promise(resolve => {
       const id = uuid()
-      shareLocalstorage.jEvent.once(id, resolve)
+
+      shareLocalstorage.jEvent.once(id, data => {
+        data.message ?
+          reject(data):
+          resolve(data)
+      })
 
       const channel = new MessageChannel()
       channel.port1.onmessage = onMessage
