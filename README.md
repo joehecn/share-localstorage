@@ -2,7 +2,7 @@
 
 ``` html
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/share-localstorage@1.0.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/share-localstorage@1.0.6"></script>
 </head>
 
 <body>
