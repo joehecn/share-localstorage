@@ -63,7 +63,7 @@
           const callback = this.eventMap[event]
           if (callback) {
             callback(params)
-            delete callback
+            delete this.eventMap[event]
           }
         },
         // 注册一次性事件
