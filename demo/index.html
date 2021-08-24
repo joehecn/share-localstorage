@@ -6,17 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
-  <script src="https://cdn.jsdelivr.net/npm/share-localstorage@1.0.3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/share-localstorage@1.0.4"></script>
 </head>
 <body>
   <script>
     shareLocalstorage.init().then(() => {
-      shareLocalstorage.setItem('test1', 'test1').then(set => {
+      shareLocalstorage.setItem('test4', 'test4').then(set => {
         console.log({ set })
+        shareLocalstorage.getItem('test4').then(get => {
+          console.log({ get })
+          shareLocalstorage.removeItem('test4').then(remove => console.log({ remove }))
+        })
       })
-      setTimeout(() => {
-        shareLocalstorage.getItem('test').then(get => console.log({ get }))
-      }, 1000)
     })
   </script>
 </body>

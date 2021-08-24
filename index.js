@@ -34,7 +34,7 @@
 
   // Handle messages received on port1
   function onMessage(e) {
-    console.log(e.data)
+    // console.log(e.data)
     const data = JSON.parse(e.data)
 
     if (data.id && shareLocalstorage.jEvent) {
@@ -59,12 +59,12 @@
       const jEvent = {
         eventMap: {},
         // 触发事件
-        emit (event, ...params) {
-          const fun = this.eventMap[event]
-          if (fun) {
-            fun(params)
+        emit (event, params) {
+          const callback = this.eventMap[event]
+          if (callback) {
+            callback(params)
+            delete callback
           }
-          delete this.eventMap[event]
         },
         // 注册一次性事件
         once (event, callback) {
@@ -73,7 +73,7 @@
         // 移除事件
         off (event) {
           if (event) {
-            delete this.eventMap[event]
+            this.eventMap[event] && delete this.eventMap[event]
             return
           }
   
