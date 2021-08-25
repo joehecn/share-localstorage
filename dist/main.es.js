@@ -1,9 +1,9 @@
-var version = "1.0.9";
+var version = "1.1.0";
 
 var global = typeof window === 'object' ? window : undefined;
 if (!global.HTMLElement)
     console.warn('share-localstorage is meant to run on browsers main thread');
-var _src = 'https://joehecn.github.io/sso/page2.html?version=1.0.0';
+var _src = 'https://joehecn.github.io/share-localstorage/?version=1.0.0';
 var _iframe = null;
 // 事件总线对象
 var _jEvent = {
@@ -62,14 +62,12 @@ var _method = function (method, keyName, keyValue) {
     });
 };
 var init = function (src) {
-    console.log('--- 1');
     return new Promise(function (resolve) {
         if (typeof src === 'string')
             _src = src;
         var iframe = document.createElement('iframe');
         iframe.addEventListener('load', function () {
             iframe['loaded'] = true;
-            console.log('--- 3');
             resolve(undefined);
         }, { once: true });
         iframe.hidden = true;
@@ -79,7 +77,6 @@ var init = function (src) {
         iframe['isIframe'] = true;
         document.body.appendChild(iframe);
         _iframe = iframe;
-        console.log('--- 2', _iframe);
     });
 };
 var destory = function () {

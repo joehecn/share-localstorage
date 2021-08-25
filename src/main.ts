@@ -71,7 +71,6 @@ const _method = (method, keyName, keyValue?) => {
 }
 
 const init = (src?) => {
-  console.log('--- 1')
   return new Promise(resolve => {
     if (typeof src === 'string') _src = src
 
@@ -79,7 +78,6 @@ const init = (src?) => {
 
     iframe.addEventListener('load', () => {
       iframe['loaded'] = true
-      console.log('--- 3')
       resolve(undefined)
     }, { once: true })
 
@@ -91,8 +89,6 @@ const init = (src?) => {
     document.body.appendChild(iframe)
 
     _iframe = iframe
-
-    console.log('--- 2', _iframe)
   })
 }
 

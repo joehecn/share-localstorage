@@ -2,12 +2,12 @@
 
 ``` html
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/share-localstorage@1.0.9/dist/main.iife.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/share-localstorage@1.1.1/dist/main.iife.js"></script>
 </head>
 
 <body>
   <script>
-    window.shareLocalstorage
+    console.log(window.shareLocalstorage)
   </script>
 </body>
 ```
