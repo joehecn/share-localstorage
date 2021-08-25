@@ -7,6 +7,31 @@
   <title>es test</title>
 </head>
 <body>
+  <pre>
+    import shareLocalstorage from 'https://cdn.jsdelivr.net/npm/share-localstorage@1.1.2'
+
+    shareLocalstorage.init()
+      .then(() => {
+        return shareLocalstorage.setItem('test5', 'test5')
+      })
+      .then(set => {
+        console.log({ set })
+        return shareLocalstorage.getItem('test5')
+      })
+      .then(get => {
+        console.log({ get })
+        return shareLocalstorage.removeItem('test5')
+      })
+      .then(remove => {
+        console.log({ remove })
+        return shareLocalstorage.getItem('test5')
+      })
+      .then(get => {
+        console.log({ get })
+        return shareLocalstorage.destory()
+      })
+      .catch(console.error)
+  </pre>
   <script type="module">
     import shareLocalstorage from 'https://cdn.jsdelivr.net/npm/share-localstorage@1.1.2'
 
