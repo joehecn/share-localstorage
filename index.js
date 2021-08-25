@@ -13,7 +13,7 @@
   if (!global.HTMLElement) console.warn('share-localstorage is meant to run on browsers main thread')
 
   const shareLocalstorage = {
-    version: { full: '1.0.0', major: 1, minor: 0, dot: 0 },
+    version: { full: '1.0.6', major: 1, minor: 0, dot: 6 },
     src: 'https://joehecn.github.io/sso/page2.html?version=1.0.0',
     jEvent: null,
     // channel: null,
@@ -28,12 +28,12 @@
   /**
    * 生成一个不重复的ID
    */
-  function uuid(){
+  function uuid () {
     return Number(Math.random().toString().substr(3, 4) + Date.now()).toString(36)
   }
 
   // Handle messages received on port1
-  function onMessage(e) {
+  function onMessage (e) {
     // console.log(e.data)
     const data = JSON.parse(e.data)
 
