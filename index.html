@@ -1,0 +1,66 @@
+
+<script>
+  console.log('---- start register service worker!')
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/share-localstorage/sw.js', { scope: '/share-localstorage/' }).then(function(reg) {
+      // registration worked
+      console.log('-- Registration succeeded. Scope is ' + reg.scope)
+
+      if (reg.installing) {
+        console.log('-- Service worker installing')
+      } else if (reg.waiting) {
+        console.log('-- Service worker installed')
+      } else if (reg.active) {
+        console.log('-- Service worker active')
+      }
+
+    }).catch(function(error) {
+      // registration failed
+      console.log('-- Registration failed with:')
+      console.error(error)
+    })
+  }
+
+  window.addEventListener('message', onMessage)
+  
+  function onMessage(e) {
+    try {
+      const data = JSON.parse(e.data)
+    
+      switch (data.method) {
+        case 'getItem':
+          {
+            const { id, keyName } = data
+            const keyValue = localStorage.getItem(keyName)
+            e.ports[0].postMessage(JSON.stringify({ id, keyValue }))
+          }
+          break
+        
+        case 'setItem':
+          {
+            const { id, keyName, keyValue } = data
+            localStorage.setItem(keyName, keyValue)
+            e.ports[0].postMessage(JSON.stringify({ id }))
+          }
+          break
+  
+        case 'removeItem':
+          {
+            const { id, keyName } = data
+            localStorage.removeItem(keyName)
+            e.ports[0].postMessage(JSON.stringify({ id }))
+          }
+          break
+        default:
+          break
+      }
+    } catch (error) {
+      console.error(error)
+      const code = error.code || 10000
+      const message = error.message || 'unknown error'
+      e.ports[0].postMessage(JSON.stringify({ id, code, message }))
+    }
+  }
+
+  </script>
