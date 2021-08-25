@@ -19,6 +19,6 @@ describe('main', () => {
     expect(res.get1.keyValue).toBe('jest-test')
     expect(res.get2.keyValue).toBe(null)
 
-    await expect(page.title()).resolves.toMatch('Document')
+    await expect(page.title()).resolves.toMatch('iife test')
   });
 });
