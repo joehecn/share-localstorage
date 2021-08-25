@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>es test</title>
+</head>
+<body>
+  <script>
+    import shareLocalstorage from 'https://cdn.jsdelivr.net/npm/share-localstorage@1.1.0'
+
+    shareLocalstorage.init()
+      .then(() => {
+        return shareLocalstorage.setItem('test5', 'test5')
+      })
+      .then(set => {
+        console.log({ set })
+        return shareLocalstorage.getItem('test5')
+      })
+      .then(get => {
+        console.log({ get })
+        return shareLocalstorage.removeItem('test5')
+      })
+      .then(remove => {
+        console.log({ remove })
+        return shareLocalstorage.getItem('test5')
+      })
+      .then(get => {
+        console.log({ get })
+        return shareLocalstorage.destory()
+      })
+      .catch(console.error)
+  </script>
+</body>
+</html>
