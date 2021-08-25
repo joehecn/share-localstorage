@@ -70,11 +70,19 @@ const _method = (method, keyName, keyValue?) => {
   })
 }
 
-const init = src => {
+const init = (src?) => {
+  console.log('--- 1')
   return new Promise(resolve => {
     if (typeof src === 'string') _src = src
 
     const iframe = document.createElement('iframe')
+
+    iframe.addEventListener('load', () => {
+      iframe['loaded'] = true
+      console.log('--- 3')
+      resolve(undefined)
+    }, { once: true })
+
     iframe.hidden = true
     iframe.src = _src
     iframe.name = 'iframe-share-localstorage'
@@ -84,10 +92,7 @@ const init = src => {
 
     _iframe = iframe
 
-    iframe.addEventListener('load', () => {
-      iframe['loaded'] = true
-      resolve(undefined)
-    }, { once: true })
+    console.log('--- 2', _iframe)
   })
 }
 
