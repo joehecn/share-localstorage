@@ -70,7 +70,7 @@ const _method = (method, keyName, keyValue?) => {
   })
 }
 
-const init = (src) => {
+const init = src => {
   return new Promise(resolve => {
     if (typeof src === 'string') _src = src
 
@@ -110,13 +110,11 @@ const removeItem = keyName => {
   return _method('removeItem', keyName)
 }
 
-export default () => {
-  return {
-    version,
-    init,
-    destory,
-    getItem,
-    setItem,
-    removeItem
-  }
+export default {
+  version,
+  init,
+  destory,
+  getItem,
+  setItem,
+  removeItem
 }

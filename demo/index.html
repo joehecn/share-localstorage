@@ -6,19 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
-  <script src="https://cdn.jsdelivr.net/npm/share-localstorage@1.0.6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/share-localstorage@1.0.8/dist/main.iife.js"></script>
 </head>
 <body>
   <script>
-    shareLocalstorage.init().then(() => {
-      shareLocalstorage.setItem('test4', 'test4').then(set => {
-        console.log({ set })
-        shareLocalstorage.getItem('test4').then(get => {
-          console.log({ get })
-          shareLocalstorage.removeItem('test4').then(remove => console.log({ remove }))
-        })
+    shareLocalstorage.init()
+      .then(() => {
+        shareLocalstorage.setItem('test4', 'test4')
       })
-    })
+      .then(set => {
+        console.log({ set })
+        shareLocalstorage.getItem('test4')
+      })
+      .then(get => {
+        console.log({ get })
+        shareLocalstorage.removeItem('test4')
+      })
+      .then(remove => {
+        console.log({ remove })
+        shareLocalstorage.getItem('test4')
+      })
+      .then(get => {
+        console.log({ get })
+      })
   </script>
 </body>
 </html>
