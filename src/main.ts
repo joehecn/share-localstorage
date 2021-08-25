@@ -4,7 +4,7 @@ import { version } from '../package.json'
 const global = typeof window === 'object' ? window : this
 if (!global.HTMLElement) console.warn('share-localstorage is meant to run on browsers main thread')
 
-let _src = 'https://joehecn.github.io/sso/page2.html?version=1.0.0'
+let _src = 'https://joehecn.github.io/sso/page2.html?version=v10'
 let _iframe = null
 
 // 事件总线对象
