@@ -1,6 +1,6 @@
 'use strict';
 
-var version = "1.0.8";
+var version = "1.0.9";
 
 var global = typeof window === 'object' ? window : undefined;
 if (!global.HTMLElement)
