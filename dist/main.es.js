@@ -3,7 +3,7 @@ var version = "1.1.1";
 var global = typeof window === 'object' ? window : undefined;
 if (!global.HTMLElement)
     console.warn('share-localstorage is meant to run on browsers main thread');
-var _src = 'https://joehecn.github.io/share-localstorage/?version=1.0.1';
+var _src = 'https://joehecn.github.io/share-localstorage/?version=1.0.2';
 var _iframe = null;
 // 事件总线对象
 var _jEvent = {
