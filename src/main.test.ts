@@ -1,6 +1,6 @@
 describe('main', () => {
   beforeAll(async () => {
-    await page.goto('http://127.0.0.1:8081/iife.t.html');
+    await page.goto('https://joehecn.github.io/share-localstorage/iife.t.html');
   });
 
   it('should be titled "Document"', async () => {
