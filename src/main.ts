@@ -35,7 +35,7 @@ const _jEvent = {
 }
 
 const _uuid = () => {
-  return Number(Math.random().toString().substr(3, 4) + Date.now()).toString(36)
+  return Number(Math.random().toString().substring(3, 7) + Date.now()).toString(36)
 }
 
 const _onMessage = e => {
